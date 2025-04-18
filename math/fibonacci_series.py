@@ -8,7 +8,7 @@ def fibonacci(n):
         a, b = b, a + b
     return fib_series
 
-# Example usage
+
 terms = int(input("Enter the number of terms: "))
 print("Fibonacci series:")
 print(fibonacci(terms))
