@@ -8,6 +8,7 @@ def sum_of_digits(number):
         number = number // 10
     return total
 
-# Example usage
+
+
 num = int(input("Enter a number: "))
 print("Sum of digits:", sum_of_digits(num))
