@@ -1,0 +1,6 @@
+Python is a powerful programming language.
+Java is also widely used.
+I enjoy learning Python with projects.
+C++ is good for system-level programming.
+Python makes scripting easier.
+Let's build something awesome with Python!
