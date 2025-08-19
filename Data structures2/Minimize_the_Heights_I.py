@@ -12,6 +12,7 @@ class Solution:
         for i in range(1, n):
             high = max(arr[i-1] + k, arr[-1] - k)  # Max after modification
             low = min(arr[0] + k, arr[i] - k)      # Min after modification
+            
             ans = min(ans, high - low)             # Update minimum difference
         
         return ans
