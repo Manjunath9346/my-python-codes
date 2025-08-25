@@ -6,6 +6,7 @@ class Solution:
         while low <= high:
             mid = (low + high) // 2
             
+            
             # Check if arr[mid] is peak
             if (mid == 0 or arr[mid] > arr[mid - 1]) and (mid == n - 1 or arr[mid] > arr[mid + 1]):
                 return mid
