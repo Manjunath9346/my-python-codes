@@ -1,0 +1,77 @@
+class Solution:
+    def swapKth(self, head, k):
+        # Step 1: Find length of linked list
+        n = 0
+        temp = head
+        while temp:
+            n += 1
+            temp = temp.next
+
+        # Step 2: If k is more than length or same node (middle in odd length)
+        if k > n or (2 * k - 1) == n:
+            return head  # No change
+
+        # Step 3: Find kth node from beginning and its previous node
+        prevX = None
+        currX = head
+        for i in range(k - 1):
+            prevX = currX
+            currX = currX.next
+
+        # Step 4: Find kth node from end and its previous node
+        prevY = None
+        currY = head
+        for i in range(n - k):
+            prevY = currY
+            currY = currY.next
+
+        # Step 5: Swap the nodes by changing links
+        if prevX:
+            prevX.next = currY
+        if prevY:
+            prevY.next = currX
+
+        # Step 6: Swap next pointers
+        temp = currX.next
+        currX.next = currY.next
+        currY.next = temp
+
+        # Step 7: If head changes
+        if k == 1:
+            head = currY
+        if k == n:
+            head = currX
+
+        return head
+
+# Helper functions
+class Node:
+    def __init__(self, x):
+        self.data = x
+        self.next = None
+
+def create_list(arr):
+    head = Node(arr[0])
+    temp = head
+    for val in arr[1:]:
+        temp.next = Node(val)
+        temp = temp.next
+    return head
+
+def print_list(head):
+    temp = head
+    while temp:
+        print(temp.data, end=" -> " if temp.next else "\n")
+        temp = temp.next
+
+# Test 1
+arr = [1, 2, 3, 4, 5]
+head = create_list(arr)
+res = Solution().swapKth(head, 1)
+print_list(res)  #  Output: 5 -> 2 -> 3 -> 4 -> 1
+
+# Test 2
+arr = [10, 5, 8, 9, 4, 3]
+head = create_list(arr)
+res = Solution().swapKth(head, 2)
+print_list(res)  # Output: 10 -> 4 -> 8 -> 9 -> 5 -> 3
